@@ -18,12 +18,12 @@ QStandardItemModel *main_model = new QStandardItemModel;
 void MainWindow::on_btn_loadfile_clicked() {
     QString file_path = QFileDialog::getOpenFileName(this, tr("Open file"));
     if (!file_path.contains(".csv")){
-        // Вывод ошибки
+        ui->label_title->setText("Error");// Вывод ошибки
         return;
     }
     vector<vector<string>> matrix = read_csv_file(file_path.toStdString());
     if (matrix.empty()) {
-        // Вывод ошибки
+        ui->label_title->setText("Error");// Вывод ошибки
         return;
     }
 
@@ -71,7 +71,7 @@ void MainWindow::on_btn_metric_clicked()
     // Проверка на диапозон значений
     int col = 1;
     if (col < 1 || col > main_model->columnCount()){
-        // Вывод ошибки
+        ui->label_title->setText("Error");
         return;
     }
     QString region = ui->line_region->text();
