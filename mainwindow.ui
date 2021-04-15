@@ -10,6 +10,18 @@
     <height>573</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>931</width>
+    <height>573</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>931</width>
+    <height>573</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -17,10 +29,10 @@
    <widget class="QPushButton" name="btn_metric">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>30</y>
+      <x>760</x>
+      <y>80</y>
       <width>131</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -30,10 +42,10 @@
    <widget class="QPushButton" name="btn_load">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>30</y>
-      <width>121</width>
-      <height>41</height>
+      <x>760</x>
+      <y>40</y>
+      <width>131</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -43,10 +55,10 @@
    <widget class="QLabel" name="label_title">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>30</y>
-      <width>421</width>
-      <height>51</height>
+      <x>30</x>
+      <y>10</y>
+      <width>701</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -71,8 +83,8 @@
    <widget class="QLineEdit" name="line_region">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>210</y>
+      <x>110</x>
+      <y>100</y>
       <width>113</width>
       <height>24</height>
      </rect>
@@ -81,8 +93,8 @@
    <widget class="QLabel" name="label_region">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>210</y>
+      <x>30</x>
+      <y>100</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -94,8 +106,8 @@
    <widget class="QLabel" name="label_col">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>250</y>
+      <x>30</x>
+      <y>140</y>
       <width>71</width>
       <height>20</height>
      </rect>
@@ -107,8 +119,8 @@
    <widget class="QLineEdit" name="line_col">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>250</y>
+      <x>110</x>
+      <y>140</y>
       <width>113</width>
       <height>24</height>
      </rect>
@@ -117,10 +129,10 @@
    <widget class="QLabel" name="label_result">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>310</y>
-      <width>211</width>
-      <height>111</height>
+      <x>770</x>
+      <y>400</y>
+      <width>121</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -139,9 +151,9 @@
    <widget class="QTableView" name="table_metric">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>120</y>
-      <width>601</width>
+      <x>240</x>
+      <y>100</y>
+      <width>491</width>
       <height>381</height>
      </rect>
     </property>
@@ -149,10 +161,10 @@
    <widget class="QPushButton" name="btn_loadfile">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>90</y>
+      <x>760</x>
+      <y>0</y>
       <width>131</width>
-      <height>25</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
