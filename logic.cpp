@@ -1,6 +1,18 @@
 #include "logic.h"
 using namespace std;
 
+bool is_normal_metric(string text){
+    /* Проверяет метрику на числовой формат */
+    if (text == "")
+        return false;
+    for (int i = 0; i < text.length(); ++i){
+        if (!isdigit(text[i]) && (text[i] != '-' && text[i] != '.')){
+            return false;
+        }
+    }
+    return true;
+}
+
 vector<string> split_line(string line){
     vector<string> result;
     string word = "";

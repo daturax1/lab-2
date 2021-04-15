@@ -14,6 +14,7 @@ MainWindow::~MainWindow()
 
 /* Глобальные переменные */
 QStandardItemModel *main_model = new QStandardItemModel;
+QStandardItemModel metric_model;
 
 void MainWindow::on_btn_loadfile_clicked() {
     QString file_path = QFileDialog::getOpenFileName(this, tr("Open file"));
@@ -68,22 +69,31 @@ void MainWindow::on_btn_metric_clicked()
 {
     QString col_str = ui->line_col->text();
     // Проверка на числовой формат
-    // Проверка на диапозон значений
+
     int col = 1;
     if (col < 1 || col > main_model->columnCount()){
         ui->label_title->setText("Error");
         return;
     }
+    col--; // для отсчета с нуля
     QString region = ui->line_region->text();
+
+    vector<double> col_metric;
 
     for (int i = 0; i < main_model->rowCount(); ++i){
         QString model_region = main_model->item(i, 1)->text();
         if (model_region == region){
-            // Запись подходит
+            QList<QStandardItem *> res; // Создаем строку
+            for (int j = 0; j < main_model->columnCount(); ++j){ // Заполняем строку
+                res.append(new QStandardItem(main_model->item(i, j)->text())); // Добавляем в строку каждую "ячейку" нужного региона
+            }
+            if (is_normal_metric(main_model->item(i, col)->text().toStdString())){
+                col_metric.push_back(main_model->item(i, col)->text().toDouble());
+            }
+            metric_model.appendRow(res);
         }
     }
-    // Просчет колонки
-    vector<double> col_metric;
+    ui->table_metric->setModel(&metric_model);
     double min = 0, max = 0, med = 0;
     load_metric(col_metric, min, max, med);
 
