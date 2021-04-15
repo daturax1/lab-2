@@ -63,3 +63,21 @@ void MainWindow::on_btn_load_clicked()
 {
     ui->table_metric->setModel(main_model);
 }
+
+void MainWindow::on_btn_metric_clicked()
+{
+    int col = ui->line_col->text().toInt();
+    QString region = ui->line_region->text();
+
+    for (int i = 0; i < main_model->rowCount(); ++i){
+        QString model_region = main_model->item(i, 1)->text();
+        if (model_region == region){
+            // Запись подходит
+        }
+    }
+    // Просчет колонки
+    vector<double> col_metric;
+    double min = 0, max = 0, med = 0;
+    load_metric(col_metric, min, max, med);
+
+}
