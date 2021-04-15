@@ -1,7 +1,13 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "logic.h"
+
 #include <QMainWindow>
+#include <QStandardItemModel>
+#include <QFileDialog>
+#include <stdio.h>
+#include <vector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -14,6 +20,11 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+private slots:
+    void on_btn_loadfile_clicked();
+
+    void on_btn_load_clicked();
 
 private:
     Ui::MainWindow *ui;

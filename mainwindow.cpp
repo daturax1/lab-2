@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+using namespace std;
 
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
+MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow){
     ui->setupUi(this);
+    this->setWindowTitle("Романова Александра");
 }
 
 MainWindow::~MainWindow()
@@ -13,3 +12,54 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/* Глобальные переменные */
+QStandardItemModel *main_model = new QStandardItemModel;
+
+void MainWindow::on_btn_loadfile_clicked() {
+    QString file_path = QFileDialog::getOpenFileName(this, tr("Open file"));
+    if (!file_path.contains(".csv")){
+        // Вывод ошибки
+        return;
+    }
+    vector<vector<string>> matrix = read_csv_file(file_path.toStdString());
+    if (matrix.empty()) {
+        // Вывод ошибки
+        return;
+    }
+
+    // Устанавливаем CSV модель
+    main_model->clear();
+    main_model->setColumnCount(matrix.at(0).size());
+    // Устанавливаем заголовки
+    QStringList headers;
+    for (int i = 0; i < matrix.at(0).size(); ++i) {
+        headers.push_back(QString::fromStdString(matrix.at(0).at(i)));
+    }
+    main_model->setHorizontalHeaderLabels(headers);
+
+    for (int i = 1; i < matrix.size(); ++i) {
+        QList<QStandardItem *> standardItemsList;
+        for (string item_str : matrix.at(i)){
+            QString item_qt_str = QString::fromStdString(item_str);
+            standardItemsList.append(new QStandardItem(item_qt_str));
+        }
+        main_model->insertRow(main_model->rowCount(), standardItemsList);
+    }
+    ui->label_title->setText(file_path);
+
+    /* Vectors */
+    vector<double> arr;
+
+    arr.push_back(2.4); // добавляем в конец вектора элемент 2.4
+    arr.push_back(-3.2);
+    arr.at(0); // обращаемся к 0 элементу
+    arr.size(); // возвращает размер вектора
+    for (int i = 0; i < arr.size(); ++i){
+        arr.at(i); // arr[i]
+    }
+}
+
+void MainWindow::on_btn_load_clicked()
+{
+    ui->table_metric->setModel(main_model);
+}
