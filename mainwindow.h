@@ -3,6 +3,7 @@
 
 #include "logic.h"
 
+#include <cctype>
 #include <QMainWindow>
 #include <QStandardItemModel>
 #include <QFileDialog>
@@ -25,6 +26,8 @@ private slots:
     void on_btn_loadfile_clicked();
 
     void on_btn_load_clicked();
+
+    void on_btn_metric_clicked();
 
 private:
     Ui::MainWindow *ui;

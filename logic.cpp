@@ -39,9 +39,9 @@ void load_metric(vector<double> metric, double& minimum, double& maximum, double
         minimum = metric[0];
         maximum = metric[metric.size() - 1];
         if (metric.size() % 2){
-            mediana = (metric[metric.size() / 2 - 1] + metric[metric.size() / 2]) / 2;
-        } else {
             mediana = metric[metric.size() / 2];
+        } else {
+            mediana = (metric[metric.size() / 2 - 1] + metric[metric.size() / 2]) / 2;
         }
     }
 }

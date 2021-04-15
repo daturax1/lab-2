@@ -66,7 +66,14 @@ void MainWindow::on_btn_load_clicked()
 
 void MainWindow::on_btn_metric_clicked()
 {
-    int col = ui->line_col->text().toInt();
+    QString col_str = ui->line_col->text();
+    // Проверка на числовой формат
+    // Проверка на диапозон значений
+    int col = 1;
+    if (col < 1 || col > main_model->columnCount()){
+        // Вывод ошибки
+        return;
+    }
     QString region = ui->line_region->text();
 
     for (int i = 0; i < main_model->rowCount(); ++i){
@@ -79,5 +86,12 @@ void MainWindow::on_btn_metric_clicked()
     vector<double> col_metric;
     double min = 0, max = 0, med = 0;
     load_metric(col_metric, min, max, med);
+
+    QString result_text = "Минимум: "+ QString::number(min) +"\nМаксимум: "+ QString::number(max)
+            +"\nМедиана: "+ QString::number(med);
+    if (col_metric.size() == 0){
+        result_text = "Нет результатов. Проверьте название региона или выбранную колонку.";
+    }
+    ui->label_result->setText(result_text);
 
 }
